@@ -1,14 +1,34 @@
 import TextField from "@mui/material/TextField";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const SignUp = () => {
 	const navigate = useNavigate();
+	const [formdata,setformdata]=useState({
+		name:"",
+		email:"",
+		password:"",
+		confirmPassword:""
+	  })
 	function handleClick() {
 		navigate("/signin");
 	}
+	const handleSubmit = async (e) => {
+        e.preventDefault()
+        try{
+            var response = await axios.post('https://pizza-app-webcode-backend.onrender.com/users/signin', {...formdata})
+            if(response.data) {
+                await localStorage.setItem("token", response.data)
+                navigate('/product');
+            }
+        }catch(err) {
+            console.log(err)
+        }
+    }
 	return (
-		<section>
+		<section onSubmit={handleSubmit}>
 			<div className="container py-5">
 				<div className="row">
 					<div className="col-md">
@@ -16,10 +36,14 @@ const SignUp = () => {
 							<div className="card-body">
 								<h2>Sign Up</h2>
 								<div className="my-4">
-									<TextField className="my-3 w-100 " id="standard-basic" label="Name" variant="standard" />
-									<TextField className="my-3 w-100" id="standard-basic" label="E-mail" variant="standard" />
-									<TextField className="my-3 w-100" id="standard-basic" label="Password" variant="standard" />
-									<TextField className="my-3 w-100" id="standard-basic" label="Confirm Password" variant="standard" />
+									<TextField className="my-3 w-100 " id="standard-basic" type="text" label="Name" variant="standard" value={formdata.name}
+									onChange={(e)=>setformdata({...formdata,name:e.target.value})} />
+									<TextField className="my-3 w-100" id="standard-basic"type="text" label="E-mail" variant="standard" value={formdata.email}
+									onChange={(e)=>setformdata({...formdata,email:e.target.value})}/>
+									<TextField className="my-3 w-100" id="standard-basic"type="password" label="Password" variant="standard"value={formdata.password}
+									onChange={(e)=>setformdata({...formdata,password:e.target.value})} />
+									<TextField className="my-3 w-100" id="standard-basic"type="password" label="Confirm Password" variant="standard"value={formdata.confirmPassword}
+									onChange={(e)=>setformdata({...formdata,confirmPassword:e.target.value})} />
 								</div>
 								<div class="d-grid gap-4 mb-3">
 									<button class="btn btn-primary" type="button">

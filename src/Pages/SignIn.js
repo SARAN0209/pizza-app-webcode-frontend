@@ -1,4 +1,5 @@
 import TextField from "@mui/material/TextField";
+import { Button } from "@mui/material";
 import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
@@ -10,17 +11,17 @@ const SignIn = () => {
 	  email:"",
 	  password:""
 	})
-  
+   console.log(formdata)
 	const [error,seterror]=useState()
   
-	const HandelSubmit=async(e)=>{
+	const handelSubmit=async(e)=>{
 	  e.preventDefault();
 	  // console.log(formdata);
 	  try {
 	  
   
   
-		const res= await axios.post("https://food-order-o8dr.onrender.com/api/signin",{...formdata});
+		const res= await axios.post("https://pizza-app-webcode-backend.onrender.com/users/signin",{...formdata});
 		// console.log(res);
 		const message=res.data.message;
 		if(res.data.token){
@@ -44,7 +45,7 @@ const SignIn = () => {
 	}
 
 	return (
-		<section>
+		<section >
 			<div className="container py-5">
 				<div className="row">
 					<div className="col-md">
@@ -55,16 +56,14 @@ const SignIn = () => {
 								</div>
 								<h2>Sign In</h2>
 								<div className="my-4">
-									<TextField className="my-3 w-100 " id="standard-basic"  value={formdata.email}
+									<TextField className="my-3 w-100 " id="standard-basic" type="text" value={formdata.email}
                                       onChange={(e)=>setformdata({...formdata,email:e.target.value})}  label="E-Mail" variant="standard" />
-									<TextField className="my-3 w-100" id="standard-basic"  value={formdata.password}
+									<TextField className="my-3 w-100" id="standard-basic" type="password" value={formdata.password}
                                       onChange={(e)=>setformdata({...formdata,password:e.target.value})} label="Password" variant="standard" />
 								</div>
 								<div class="d-grid gap-4 mb-3">
-									<button class="btn btn-primary" type="button"onSubmit={(e)=>HandelSubmit(e)}>
-										Signin
-									</button>
-									<button class="btn btn-primary" type="button"onSubmit={(e)=>HandelSubmit(e)}>
+								<Button variant="contained" type="submit" onClick={handelSubmit}> Submit </Button>
+									<button class="btn btn-primary" type="submit" onClick={handelSubmit}>
 										<Link to="/forgetpassword">Forgot Password?</Link>
 									</button>
 								</div>
