@@ -58,9 +58,9 @@ const CartPage = () => {
 										<td className="align-middle">
 											<p class="card-text fs-5">{100 * count}</p>
 										</td>
-										<th className="align-middle" scope="row">
+										{/* <th className="align-middle" scope="row">
 											X
-										</th>
+										</th> */}
 									</tr>
 								</tbody>
 							</table>

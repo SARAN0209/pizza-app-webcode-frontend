@@ -46,13 +46,13 @@ const SignUp = () => {
 									onChange={(e)=>setformdata({...formdata,confirmPassword:e.target.value})} />
 								</div>
 								<div class="d-grid gap-4 mb-3">
-									<button class="btn btn-primary" type="button">
+									<button class="btn btn-primary" type="button"onClick={(e) => handleClick()}>
 										Signup
 									</button>
 								</div>
 								<div>
 									Already Have account?
-									<span className="text-primary fs-6 mx-2" onClick={(e) => handleClick()}>
+									<span className="text-primary fs-6 mx-2" >
 										<Link to="/signup" className="text-primary">
 											Signin
 										</Link>

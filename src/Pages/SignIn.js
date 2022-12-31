@@ -15,8 +15,9 @@ const SignIn = () => {
 	const [error,seterror]=useState()
   
 	const handelSubmit=async(e)=>{
+		
 	  e.preventDefault();
-	  // console.log(formdata);
+	  console.log(formdata);
 	  try {
 	  
   
@@ -62,7 +63,7 @@ const SignIn = () => {
                                       onChange={(e)=>setformdata({...formdata,password:e.target.value})} label="Password" variant="standard" />
 								</div>
 								<div class="d-grid gap-4 mb-3">
-								<Button variant="contained" type="submit" onClick={handelSubmit}> Submit </Button>
+								<Button variant="contained"  onClick={(e)=>{handelSubmit()}}> Submit </Button>
 									<button class="btn btn-primary" type="submit" onClick={handelSubmit}>
 										<Link to="/forgetpassword">Forgot Password?</Link>
 									</button>

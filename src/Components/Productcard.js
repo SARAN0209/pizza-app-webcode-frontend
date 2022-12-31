@@ -1,9 +1,9 @@
-// import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { Cart } from "../ProductContext";
+// import { useContext } from "react";
+// import { Cart } from "../ProductContext";
+import { Link } from "react-router-dom";
 
 const Productcard = ({ product }) => {
-	const { cart, setCart } = useContext(Cart);
+	// const { cart, setCart } = useContext(Cart);
 	
 
 	return (
@@ -19,7 +19,7 @@ const Productcard = ({ product }) => {
 				</div>
 				<div className="d-flex justify-content-around align-items-center m-2">
 					<button href="#" className="btn btn-danger text-center d-inline mx-auto">
-						Add to cart
+					<Link to="/Cart">Add to cart</Link>
 					</button>
 				</div>
 			</div>
