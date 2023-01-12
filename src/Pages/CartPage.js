@@ -82,7 +82,7 @@ const CartPage = () => {
 							</div>
 							<div className="text-center">
 								<button class="btn btn-danger my-3 w-100">
-									<Link to="/checkout">PROCEED TO CHECKOUT</Link>
+									<Link to="/payment">PROCEED TO PAYMENT</Link>
 								</button>
 							</div>
 						</div>
