@@ -1,49 +1,47 @@
-import TextField from "@mui/material/TextField";
-import { Button } from "@mui/material";
-import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { BiUserCircle } from "react-icons/bi";
+import {useFormik} from "formik";
+import Swal from "sweetalert2";
 
 const SignIn = () => {
 	const navigate=useNavigate()
-	const [formdata,setformdata]=useState({
-	  email:"",
-	  password:""
-	})
-   console.log(formdata)
-	const [error,seterror]=useState()
-  
-	const handelSubmit=async(e)=>{
-		
-	  e.preventDefault();
-	  console.log(formdata);
-	  try {
-	  
-  
-  
-		const res= await axios.post("https://pizza-app-webcode-backend.onrender.com/users/signin",{...formdata});
-		// console.log(res);
-		const message=res.data.message;
-		if(res.data.token){
-		 
-	   
-		 navigate("/home")
-	 
-		}else{
-	   
-		  seterror(message)
+
+let formik = useFormik({
+	initialValues: {
+		email:"",
+		password:""
+	},
+	validate:(values)=>{
+		const errors ={};
+		if (!values.email){
+			errors.email = "Email is Required";	
+		}else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+			errors.email = 'Invalid email address';
 		}
-		
-	  } catch (error) {
-		console.log(error);
-		
-	  }
-	
-  
-  
-  
-	}
+		if(!values.password){
+			errors.password = "Password is Required"
+		}
+		return errors;
+
+	},
+	onSubmit: async (values) => {
+		try {
+		  const response = await axios.post('https://pizza-app-webcode-backend.onrender.com/users/signin', {...values});
+		  navigate("/");
+		 if(response.data) {
+			localStorage.setItem("token", response.data);
+		 }
+		} catch (error) {
+		  console.log(error.response.data.meg);
+		  Swal.fire({
+			title: "Wrong Details",
+			icon: "error",
+			confirmButtonText: "okay",
+		  });
+		}
+	  },
+})
 
 	return (
 		<section >
@@ -56,15 +54,18 @@ const SignIn = () => {
 									<BiUserCircle />
 								</div>
 								<h2>Sign In</h2>
+								<form onSubmit={formik.handleSubmit}>
 								<div className="my-4">
-									<TextField className="my-3 w-100 " id="standard-basic" type="text" value={formdata.email}
-                                      onChange={(e)=>setformdata({...formdata,email:e.target.value})}  label="E-Mail" variant="standard" />
-									<TextField className="my-3 w-100" id="standard-basic" type="password" value={formdata.password}
-                                      onChange={(e)=>setformdata({...formdata,password:e.target.value})} label="Password" variant="standard" />
+								<span style={{ color: "red" }}>{formik.touched.email&&formik.errors.email}</span>
+                                    <input type="email" class="form-control" name="email" placeholder="Email" onChange={formik.handleChange} value={formik.values.email} /><br/>
+									<span style={{ color: "red" }}>{formik.touched.password&&formik.errors.password}</span>
+                                    <input type="password" class="form-control" name="password" placeholder="Password" onChange={formik.handleChange} value={formik.values.password} />
 								</div>
 								<div class="d-grid gap-4 mb-3">
-								<Button variant="contained"  onClick={(e)=>{handelSubmit()}}> Submit </Button>
-									<button class="btn btn-primary" type="submit" onClick={handelSubmit}>
+								<div class="d-grid gap-4 mb-3">
+								<input type="submit" class="form-control btn btn-warning" value={"Login"} />
+								</div>
+									<button class="btn btn-primary" type="submit" >
 										<Link to="/forgetpassword">Forgot Password?</Link>
 									</button>
 								</div>
@@ -76,6 +77,7 @@ const SignIn = () => {
 										</Link>
 									</span>
 								</div>
+								</form>
 							</div>
 						</div>
 					</div>
