@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 
 const Menu = () => {
+
 	return (
+
 		<section className="container-fluid menubar py-3">
 			<div className="container">
 				<div className="row ">
@@ -17,13 +19,16 @@ const Menu = () => {
 								<Link to="/">HOME</Link>
 							</li>
 							<li>
-								<Link to="signin">LOGIN</Link>
-							</li>
-							<li className="mx-0 d-flex align-items-center">
-								<Link to="cart" className="mx-2">
+							<Link to="cart" className="mx-2">
 									<FaShoppingCart className="fs-4 mx-2 text-white" />
 									Cart
 								</Link>
+								
+
+							</li>
+							<li className="mx-0 d-flex align-items-center">
+								
+							<Link to="signin">LOGOUT</Link>
 
 							
 							</li>

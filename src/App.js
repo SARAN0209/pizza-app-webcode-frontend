@@ -1,11 +1,11 @@
 import "./App.css";
-import Menu from "./Components/Header/Menu";
+// import Menu from "./Components/Header/Menu";
 import Navigation from "./Components/Header/Navigation";
 
 const App = () => {
   return (
     <section>
-      <Menu />
+      {/* <Menu /> */}
       <Navigation />
     </section>
   );

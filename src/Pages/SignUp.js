@@ -50,7 +50,7 @@ const SignUp = () => {
 
             } catch (error) {
                 console.log(error);
-				window.alert("Please enter registered email ID and Password");
+				window.alert(" Already exist email or password Please enter new email ID and Password");
             }
 		}
 	})

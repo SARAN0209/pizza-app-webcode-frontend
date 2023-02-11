@@ -1,6 +1,8 @@
 import React,{ useState } from "react";
+import Menu from "../Components/Header/Menu";
 import Productcard from "../Components/Productcard";
 import BannerImage from "../Images/Bannerpizza.png";
+
 
 var Pizza = [{
 	"name" : 'Mashroom pizza',
@@ -50,6 +52,7 @@ const Home = () => {
 
 	return (
 		<section>
+			<Menu/>
 			<div className="container-fluid bg-danger px-3 py-5">
 				<div className="container">
 					<div className="row text-start d-flex align-items-center">
