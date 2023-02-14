@@ -28,9 +28,9 @@ let formik = useFormik({
 	onSubmit: async (values) => {
 		try {
 		  const response = await axios.post('https://pizza-app-webcode-backend.onrender.com/users/signin', {...values});
-		  navigate("/");
 		 if(response.data) {
 			localStorage.setItem("token", response.data);
+			navigate("/");
 		 }
 		} catch (error) {
 		  console.log(error.response.data.meg);
@@ -41,7 +41,7 @@ let formik = useFormik({
 		  });
 		}
 	  },
-})
+});
 
 	return (
 		<section >
