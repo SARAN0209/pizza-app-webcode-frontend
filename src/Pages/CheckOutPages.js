@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
+import Menu from "../Components/Header/Menu";
 
 const CheckOutPages = () => {
 	return (
 		<section>
+			<Menu/>
 			<div className="container mx-auto my-5">
 				<div className="row">
 					<div className="col-md-6">

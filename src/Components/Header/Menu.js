@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
+import { useContext } from "react";
+import { Cart } from "../../Context/Context";
+
+
 
 const Menu = () => {
-
+	const {cart}=useContext(Cart)
 	return (
 
 		<section className="container-fluid menubar py-3">
@@ -19,11 +23,11 @@ const Menu = () => {
 								<Link to="/">HOME</Link>
 							</li>
 							<li>
-							<Link to="cart" className="mx-2">
+							<Link to="/cart" className="mx-2">
 									<FaShoppingCart className="fs-4 mx-2 text-white" />
 									Cart
 								</Link>
-								
+								<span style={{color:"yellow"}}>{cart.length}</span>
 
 							</li>
 							<li className="mx-0 d-flex align-items-center">

@@ -1,13 +1,14 @@
 import "./App.css";
-// import Menu from "./Components/Header/Menu";
 import Navigation from "./Components/Header/Navigation";
+import Context from "./Context/Context";
 
 const App = () => {
   return (
+    <Context>
     <section>
-      {/* <Menu /> */}
       <Navigation />
     </section>
+    </Context>
   );
 };
 
