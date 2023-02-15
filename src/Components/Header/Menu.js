@@ -32,7 +32,7 @@ const Menu = () => {
 							</li>
 							<li className="mx-0 d-flex align-items-center">
 								
-							<Link to="signin">LOGOUT</Link>
+							<Link to="/signIn">LOGOUT</Link>
 
 							
 							</li>
