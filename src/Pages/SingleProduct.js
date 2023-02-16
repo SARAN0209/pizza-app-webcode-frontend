@@ -6,9 +6,9 @@ const SingleProduct = ({ product }) => {
 	useEffect(() => {
 		const getProduct = async () => {
 			const response = await axios.get("https://pizzaa-server.herokuapp.com/products/get/{_id}");
-			const dharans = response.data;
-			console.log(dharans);
-			setProducts(dharans);
+			const prod = response.data;
+			// console.log(prod);
+			setProducts(prod);
 		};
 		getProduct();
 	}, []);

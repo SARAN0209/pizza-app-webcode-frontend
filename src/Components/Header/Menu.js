@@ -20,7 +20,7 @@ const Menu = () => {
 						</ul>
 						<ul className="menuName d-flex align-items-center mb-0">
 							<li>
-								<Link to="/">HOME</Link>
+								<Link to="/home">HOME</Link>
 							</li>
 							<li>
 							<Link to="/cart" className="mx-2">
@@ -32,7 +32,7 @@ const Menu = () => {
 							</li>
 							<li className="mx-0 d-flex align-items-center">
 								
-							<Link to="/signIn">LOGOUT</Link>
+							<Link to="/">LOGOUT</Link>
 
 							
 							</li>

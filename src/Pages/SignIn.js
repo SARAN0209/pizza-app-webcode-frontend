@@ -28,9 +28,14 @@ let formik = useFormik({
 	onSubmit: async (values) => {
 		try {
 		  const response = await axios.post('https://pizza-app-webcode-backend.onrender.com/users/signin', {...values});
-		 if(response.data) {
+		//   console.log(response)
+		 if(response) {
 			localStorage.setItem("token", response.data);
-			navigate("/");
+			
+			const Token = localStorage.getItem("token");
+			console.log(Token)
+			Token ? navigate("/home") : navigate("/")
+			
 		 }
 		} catch (error) {
 		  console.log(error.response.data.meg);
@@ -65,9 +70,9 @@ let formik = useFormik({
 								<div class="d-grid gap-4 mb-3">
 								<input type="submit" class="form-control btn btn-warning" value={"Login"} />
 								</div>
-									<button class="btn btn-primary" type="submit" >
+									{/* <button class="btn btn-primary" type="submit" >
 										<Link to="/forgetpassword">Forgot Password?</Link>
-									</button>
+									</button> */}
 								</div>
 								<div>
 									Don’t have an account?

@@ -42,7 +42,7 @@ const SignUp = () => {
 					  icon: "success",
 					  confirmButtonText: "okay",
 					});
-					navigate("/signin");
+					navigate("/");
 				  }
 				  if (response.status === 200) {
 					alert(" Account Created sucessfully");
@@ -79,7 +79,7 @@ const SignUp = () => {
 								<div>
 									Already Have account?
 									<span className="text-primary fs-6 mx-2" >
-										<Link to="/signin" className="text-primary">
+										<Link to="/" className="text-primary">
 											Signin
 										</Link>
 									</span>
