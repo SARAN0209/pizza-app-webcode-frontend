@@ -1,3 +1,4 @@
+
 import React,{ createContext } from "react";
 import { useState } from "react";
 
@@ -11,5 +12,6 @@ const Context = ({children})=>{
         </Cart.Provider>
     );
 }
+
 
 export default Context;

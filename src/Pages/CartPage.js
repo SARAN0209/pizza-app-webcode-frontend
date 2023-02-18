@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useContext } from "react";
 
 // import { AiFillPlusSquare, AiFillMinusSquare, } from "react-icons/ai";
@@ -133,3 +134,4 @@ const CartPage = () => {
 };
 
 export default CartPage;
+

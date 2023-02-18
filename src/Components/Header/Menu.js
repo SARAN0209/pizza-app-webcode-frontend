@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { useContext } from "react";
@@ -45,3 +46,4 @@ const Menu = () => {
 };
 
 export default Menu;
+

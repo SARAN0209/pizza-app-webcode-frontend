@@ -33,8 +33,7 @@ const SignUp = () => {
 		},
 		onSubmit : async (values) =>{
 			try {
-                let response = await axios.post('https://pizza-app-webcode-backend.onrender.com/users/signup',{...values} );
-
+                const response = await axios.post('https://pizza-app-webcode-backend.onrender.com/users/signup',{...values} );
                 if (response.data) {
 					localStorage.setItem("token", response.data);
 					Swal.fire({
@@ -43,14 +42,12 @@ const SignUp = () => {
 					  confirmButtonText: "okay",
 					});
 					navigate("/");
+				  } else {
+					alert(" Already existing User, Please enter new email ID and Password");
 				  }
-				  if (response.status === 200) {
-					alert(" Account Created sucessfully");
-				  }
-
             } catch (error) {
                 console.log(error);
-				window.alert(" Already exist email or password Please enter new email ID and Password");
+				alert(" Already existing User, Please enter new email ID and Password");
             }
 		}
 	})
