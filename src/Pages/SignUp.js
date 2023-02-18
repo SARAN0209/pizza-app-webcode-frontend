@@ -42,12 +42,14 @@ const SignUp = () => {
 					  confirmButtonText: "okay",
 					});
 					navigate("/");
-				  } else {
-					alert(" Already existing User, Please enter new email ID and Password");
 				  }
             } catch (error) {
                 console.log(error);
-				alert(" Already existing User, Please enter new email ID and Password");
+				Swal.fire({
+					title: "Already exist user or worng details please check",
+					icon: "error",
+					confirmButtonText: "okay",
+				  });
             }
 		}
 	})
